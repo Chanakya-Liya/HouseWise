@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import FilterForm from '../components/FilterForm';
 import PropertyGrid from '../components/PropertyGrid';
 import propertyData from '../assets/properties(1).json';
-import { data } from 'react-router-dom';
 
 const PropertyPage: React.FC = () => {
   const [filters, setFilters] = useState({
