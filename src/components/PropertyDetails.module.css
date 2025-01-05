@@ -24,4 +24,29 @@
   .detailsContent p {
     margin: 5px 0;
   }
+
+  .addButton{
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+
+  .addButton:hover {
+    background-color: #19682c;
+  }
+
+  .favoritedButton {
+    background-color: #ff4d4d; 
+    color: white;
+  }
+  
+  .favoritedButton:hover {
+    background-color: #cc0000;
+  }
   

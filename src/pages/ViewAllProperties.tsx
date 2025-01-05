@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import FilterForm from '../components/FilterForm';
 import PropertyGrid from '../components/PropertyGrid';
 import propertyData from '../assets/properties(1).json';
+import { data } from 'react-router-dom';
 
 const PropertyPage: React.FC = () => {
   const [filters, setFilters] = useState({
@@ -9,7 +10,18 @@ const PropertyPage: React.FC = () => {
     bedrooms: '',
     location: '',
     maxPrice: '',
+    date: '',
   });
+
+  const parseDate = (added: { month: string; day: number; year: number }): string => {
+    const months = {
+      January: 1, February: 2, March: 3, April: 4,
+      May: 5, June: 6, July: 7, August: 8,
+      September: 9, October: 10, November: 11, December: 12,
+    };
+    const month = months[added.month as keyof typeof months];
+    return `${added.year}-${String(month).padStart(2, '0')}-${String(added.day).padStart(2, '0')}`;
+  };
 
   // Filtered properties based on the filter state
   const filteredProperties = propertyData.properties.filter((property) => {
@@ -23,8 +35,10 @@ const PropertyPage: React.FC = () => {
     const matchesMaxPrice = filters.maxPrice
       ? property.price <= parseInt(filters.maxPrice)
       : true;
-
-    return matchesType && matchesBedrooms && matchesLocation && matchesMaxPrice;
+    const matchesDate = filters.date
+      ? parseDate(property.added) >= filters.date
+      : true;
+    return matchesType && matchesBedrooms && matchesLocation && matchesMaxPrice && matchesDate;
   });
 
   // Update filter state

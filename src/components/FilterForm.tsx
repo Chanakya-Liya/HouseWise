@@ -20,7 +20,6 @@ const FilterForm: React.FC<FilterFormProps> = ({ onFilterChange }) => {
           <select name="type">
             <option value="">All</option>
             <option value="House">House</option>
-            <option value="Apartment">Apartment</option>
             <option value="Flat">Flat</option>
           </select>
         </label>
@@ -38,6 +37,13 @@ const FilterForm: React.FC<FilterFormProps> = ({ onFilterChange }) => {
           <input
             type="text"
             name="location"
+          />
+        </label>
+        <label>
+          Added After:
+          <input
+            type="date"  
+            name="date"
           />
         </label>
         <label>

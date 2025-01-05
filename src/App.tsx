@@ -6,6 +6,7 @@ import Navbar from './components/NavBar';
 import Footer from './components/Footer';
 import PropertyDetails from './pages/PropertyDetails';
 import FavoritesPage from './pages/Favourites';
+import ContactUsPage from './pages/ContactUs';
 
 const App: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
         <Route path="/view-all-properties" element={<ViewAllProperties />} />
         <Route path="/property-details/:id" element={<PropertyDetails />} />
         <Route path="/favourites" element={<FavoritesPage />} />
+        <Route path="/contact-us" element={<ContactUsPage />} />
       </Routes>
       <Footer />
     </Router>

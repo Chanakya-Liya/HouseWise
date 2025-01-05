@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
           Favourites
         </NavLink>
         <NavLink 
-          to="/contact" 
+          to="/contact-us" 
           className={({ isActive }) => isActive ? styles.active : ''}
         >
           Contact Us
