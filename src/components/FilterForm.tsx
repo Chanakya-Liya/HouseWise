@@ -5,7 +5,9 @@ interface FilterFormProps {
   onFilterChange: (name: string, value: string) => void;
 }
 
+// Define the FilterForm component
 const FilterForm: React.FC<FilterFormProps> = ({ onFilterChange }) => {
+  // Handle input changes and call the onFilterChange prop with the input name and value
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     onFilterChange(name, value);
@@ -15,6 +17,7 @@ const FilterForm: React.FC<FilterFormProps> = ({ onFilterChange }) => {
     <div className={`${styles.filterForm} ${styles.slideIn}`}>
       <h2>Filter Properties</h2>
       <form>
+        {/* Filter by property type */}
         <label>
           Type:
           <select name="type">
@@ -23,6 +26,7 @@ const FilterForm: React.FC<FilterFormProps> = ({ onFilterChange }) => {
             <option value="Flat">Flat</option>
           </select>
         </label>
+        {/* Filter by number of bedrooms */}
         <label>
           Bedrooms:
           <input
@@ -32,6 +36,7 @@ const FilterForm: React.FC<FilterFormProps> = ({ onFilterChange }) => {
             max="10"
           />
         </label>
+        {/* Filter by location */}
         <label>
           Location:
           <input
@@ -39,6 +44,7 @@ const FilterForm: React.FC<FilterFormProps> = ({ onFilterChange }) => {
             name="location"
           />
         </label>
+        {/* Filter by date added */}
         <label>
           Added After:
           <input
@@ -46,6 +52,7 @@ const FilterForm: React.FC<FilterFormProps> = ({ onFilterChange }) => {
             name="date"
           />
         </label>
+        {/* Filter by maximum price */}
         <label>
           Max Price:
           <input
@@ -53,10 +60,12 @@ const FilterForm: React.FC<FilterFormProps> = ({ onFilterChange }) => {
             name="maxPrice"
           />
         </label>
+        {/* Apply button to trigger filtering */}
         <button
           className={styles.applyButton}
           type="button"
           onClick={() => {
+            // Get all form elements and trigger handleInputChange for each
             const formElements = (document.querySelector('form') as HTMLFormElement).elements;
             Array.from(formElements).forEach(element => {
               if (element instanceof HTMLInputElement || element instanceof HTMLSelectElement) {

@@ -2,7 +2,6 @@ import React from 'react';
 import HeroSection from '../components/HeroSection';
 import PropertyGrid from '../components/PropertyGrid';
 import ViewAllButton from '../components/ViewAllButton';
-import properties from '../assets/properties(1).json';
 
 const HomePage: React.FC = () => {
   return (

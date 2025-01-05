@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './PropertyCard.module.css';
 import { useNavigate } from 'react-router-dom';
 
+// Define the Property interface
 interface Property {
   id: string;
   type: string;
@@ -13,7 +14,9 @@ interface Property {
   location: string;
 }
 
+// Define the PropertyCard component
 const PropertyCard: React.FC<{ property: Property }> = ({ property }) => {
+  // State to manage if the property is favorited
   const [isFavorited, setIsFavorited] = useState(() => {
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
     return favorites.some((fav: any) => fav.id === property.id);
@@ -21,6 +24,7 @@ const PropertyCard: React.FC<{ property: Property }> = ({ property }) => {
 
   const navigate = useNavigate();
 
+  // Function to toggle the favorite status of the property
   const toggleFavorite = (event: React.MouseEvent) => {
     event.stopPropagation();
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
@@ -36,10 +40,12 @@ const PropertyCard: React.FC<{ property: Property }> = ({ property }) => {
     setIsFavorited(!isFavorited);
   };
 
+  // Function to handle card click and navigate to property details
   const handleCardClick = () => {
     navigate(`/property-details/${property.id}`);
   };
 
+  // Function to handle drag start event
   const handleDragStart = (event: React.DragEvent) => {
     event.dataTransfer.setData('propertyId', property.id);
   };
