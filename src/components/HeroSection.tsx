@@ -14,13 +14,7 @@ const HeroSection: React.FC = () => {
       <h1 className={styles.title}>Find Your Dream Home</h1>
       <p className={styles.snarkyRemark}>Where You Find Your Dream Home For An Affordable Price</p>
       <div className={styles.searchSection}>
-        <input
-          type="text"
-          placeholder="Search for properties..."
-          className={styles.searchInput}
-        />
-        <button className={styles.searchButton}>Search</button>
-        <button className={styles.filterButton} onClick={handleViewAllProperties}>Filter</button>
+        <button className={styles.searchButton} onClick={handleViewAllProperties}>Find Your Perfect Home</button>
       </div>
     </div>
   );

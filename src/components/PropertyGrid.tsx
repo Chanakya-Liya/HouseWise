@@ -4,20 +4,19 @@ import styles from './PropertyGrid.module.css';
 import propertyData from '../assets/properties(1).json';
 
 interface PropertyGridProps {
-  sliceValue: number;
+  properties?: Array<any>; 
+  sliceValue?: number; 
+  onDragStart?: any;
 }
 
-const PropertyGrid: React.FC<PropertyGridProps> = ({ sliceValue }) => {
-  const properties = propertyData.properties.slice(0, sliceValue).map(property => ({
-    ...property,
-    onClick: (id: number) => {
-      console.log(`Property ${id} clicked`);
-    }
-  }));
+const PropertyGrid: React.FC<PropertyGridProps> = ({ properties, sliceValue }) => {
+  const displayedProperties = properties
+    ? properties.slice(0, sliceValue ?? properties.length)
+    : propertyData.properties.slice(0, sliceValue ?? propertyData.properties.length);
 
   return (
     <div className={styles.grid}>
-      {properties.map((property) => (
+      {displayedProperties.map((property) => (
         <PropertyCard key={property.id} property={property} />
       ))}
     </div>

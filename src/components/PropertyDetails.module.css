@@ -1,0 +1,27 @@
+.detailsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .propertyImage {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .detailsContent {
+    text-align: left;
+    max-width: 600px;
+  }
+  
+  .detailsContent h1 {
+    margin-bottom: 10px;
+  }
+  
+  .detailsContent p {
+    margin: 5px 0;
+  }
+  

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './PropertyCard.module.css';
+import { useNavigate } from 'react-router-dom';
 
 interface Property {
   id: string;
@@ -10,12 +11,46 @@ interface Property {
   picture: string;
   url: string;
   location: string;
-  onClick: (id: number) => void;
 }
 
 const PropertyCard: React.FC<{ property: Property }> = ({ property }) => {
+  const [isFavorited, setIsFavorited] = useState(() => {
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    return favorites.some((fav: any) => fav.id === property.id);
+  });
+
+  const navigate = useNavigate();
+
+  const toggleFavorite = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    let updatedFavorites;
+
+    if (isFavorited) {
+      updatedFavorites = favorites.filter((fav: any) => fav.id !== property.id);
+    } else {
+      updatedFavorites = [...favorites, property];
+    }
+
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    setIsFavorited(!isFavorited);
+  };
+
+  const handleCardClick = () => {
+    navigate(`/property-details/${property.id}`);
+  };
+
+  const handleDragStart = (event: React.DragEvent) => {
+    event.dataTransfer.setData('propertyId', property.id);
+  };
+
   return (
-    <div className={styles.card}>
+    <div
+      className={styles.card}
+      onClick={handleCardClick}
+      draggable="true"
+      onDragStart={handleDragStart}
+    >
       <img
         src={property.picture}
         alt={property.type}
@@ -26,6 +61,14 @@ const PropertyCard: React.FC<{ property: Property }> = ({ property }) => {
         <p>Bedrooms: {property.bedrooms}</p>
         <p>Location: {property.location}</p>
         <p>Price: ${property.price.toLocaleString()}</p>
+      </div>
+      <div
+        className={`${styles.heartIcon} ${isFavorited ? styles.favorited : ''}`}
+        onClick={toggleFavorite}
+      >
+        <span className="material-symbols-outlined">
+          {isFavorited ? '🧡' : '🤍'}
+        </span>
       </div>
     </div>
   );

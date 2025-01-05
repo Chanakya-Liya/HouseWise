@@ -2,7 +2,7 @@ import React from 'react';
 import HeroSection from '../components/HeroSection';
 import PropertyGrid from '../components/PropertyGrid';
 import ViewAllButton from '../components/ViewAllButton';
-import Footer from '../components/Footer';
+import properties from '../assets/properties(1).json';
 
 const HomePage: React.FC = () => {
   return (
@@ -10,7 +10,6 @@ const HomePage: React.FC = () => {
       <HeroSection />
       <PropertyGrid sliceValue={6}/>
       <ViewAllButton />
-      <Footer />
     </>
   );
 };
