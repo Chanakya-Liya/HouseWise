@@ -9,7 +9,7 @@ const HomePage: React.FC = () => {
     <>
       <HeroSection />
       <PropertyGrid sliceValue={6}/>
-      <ViewAllButton onClick={() => console.log('View All Button Clicked')} />
+      <ViewAllButton />
       <Footer />
     </>
   );

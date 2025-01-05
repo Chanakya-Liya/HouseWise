@@ -16,6 +16,12 @@ const Navbar: React.FC = () => {
           Home
         </NavLink>
         <NavLink 
+          to="/view-all-properties" 
+          className={({ isActive }) => isActive ? styles.active : ''}
+        >
+          View All
+        </NavLink>
+        <NavLink 
           to="/favourites" 
           className={({ isActive }) => isActive ? styles.active : ''}
         >

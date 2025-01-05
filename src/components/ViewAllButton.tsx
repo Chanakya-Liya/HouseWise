@@ -1,14 +1,18 @@
-import React from "react";
-import styles from "./ViewAllButton.module.css";
+import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import styles from './ViewAllButton.module.css';
 
-interface ViewAllButtonProps {
-  onClick: () => void;
-}
+const ViewAllButton: React.FC = () => {
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
-const ViewAllButton: React.FC<ViewAllButtonProps> = ({ onClick }) => {
+  const handleClick = () => {
+    // Navigate to /view-all-properties route
+    navigate('/view-all-properties');
+  };
+
   return (
     <div className={styles.viewAll}>
-      <button className={styles.viewAllButton} onClick={onClick}>
+      <button className={styles.viewAllButton} onClick={handleClick}>
         View All Properties
       </button>
     </div>
